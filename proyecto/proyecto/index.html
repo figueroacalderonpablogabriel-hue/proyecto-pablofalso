@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAKE SHOP | Tienda Online</title>
+  <!-- conectamos nuestra hoja de estilos -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- barra de arriba con el logo, el buscador y el boton de la bolsa -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#" class="brand-logo">FAKE<span>SHOP</span></a>
+
+      <!-- input para buscar productos por nombre o descripcion -->
+      <div class="search-wrapper">
+        <input 
+          id="search-input" 
+          placeholder="Buscar producto o descripción..." 
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- boton para abrir el carrito y el badge con el contador -->
+      <button id="btn-open-cart" class="cart-trigger">
+        <span>Mi Bolsa</span>
+        <span id="cart-count" class="cart-badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- seccion con los botones de categorias y el menu desplegable para ordenar -->
+    <section class="controls-bar">
+      
+      <!-- usamos radio buttons con css para que se vean como botones tipo pildora y cumplan con el evento change -->
+      <div id="category-filters" class="category-pills">
+        <label class="pill">
+          <input type="radio" name="category" value="all" checked />
+          <span>Todos</span>
+        </label>
+        <label class="pill">
+          <input type="radio" name="category" value="electronics" />
+          <span>Electrónica</span>
+        </label>
+        <label class="pill">
+          <input type="radio" name="category" value="jewelery" />
+          <span>Joyería</span>
+        </label>
+        <label class="pill">
+          <input type="radio" name="category" value="men's clothing" />
+          <span>Ropa Hombre</span>
+        </label>
+        <label class="pill">
+          <input type="radio" name="category" value="women's clothing" />
+          <span>Ropa Mujer</span>
+        </label>
+      </div>
+
+      <!-- select para ordenar los productos por precio o nombre -->
+      <div class="sort-wrapper">
+        <select id="sort-select" class="sort-select">
+          <option value="default">Ordenar por: Destacados</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+          <option value="name-asc">Nombre: A - Z</option>
+          <option value="name-desc">Nombre: Z - A</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- texto que avisa cuando esta cargando la api o si no hay resultados -->
+    <div id="status-message" class="status-message">
+      <p>Cargando productos...</p>
+    </div>
+
+    <!-- grid vacio donde javascript va a desplegar dinamicamente todos los productos de la api -->
+    <section id="product-grid" class="product-grid">
+      <!-- las tarjetas se inyectan solas aqui desde el app.js -->
+    </section>
+  </main>
+
+  <!-- panel lateral del carrito de compras (parte de Sergio / Persona 2) -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <h2>CARRITO (<span id="drawer-cart-count">0</span>)</h2>
+      <button id="btn-close-cart" class="btn-close">&times;</button>
+    </div>
+
+    <!-- aqui se van a renderizar los productos que agreguemos al carrito -->
+    <div id="cart-items" class="cart-items">
+      <p class="empty-cart-msg">Todavía no has agregado productos.</p>
+    </div>
+
+    <!-- parte de abajo del carrito con el total y los botones -->
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Total a pagar</span>
+        <strong id="cart-total">$0.00</strong>
+      </div>
+      <div class="cart-actions">
+        <button id="btn-checkout" class="btn-primary">Finalizar Compra</button>
+        <button id="btn-clear-cart" class="btn-outline-danger">Vaciar Bolsa</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- conectamos el archivo unico de javascript al final -->
+  <script src="Js/api.js"></script>
+  <script src="Js/cart.js"></script>
+  <script src="Js/main.js"></script>
+  <script src="Js/stylo.js"></script>
+</body>
+</html>
